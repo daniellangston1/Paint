@@ -1,5 +1,5 @@
 # Paint
-A full stack CRUD application. This includes user/reg validations, password hashing, etc.
+A full stack CRUD application. This includes user/reg validations, password hashing, OOP, etc.
 
 
 startup - Terminal commands:
