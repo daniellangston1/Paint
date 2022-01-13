@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Welcome {{ user.first_name }} </h1>
+    </div>
+    <h4>Paintings:</h4>
+    </div>
+    <table class="table" action= '/dashboard'>
+        <thead>
+            <tr>
+                <th>Title:</th>
+                <th>By:</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for painting in paintings %}
+            <tr>
+                <td><a href ='/show/{{painting.id}}'>{{painting.title}}</a></td> 
+                <td>{{painting.creator.first_name}}</td>
+                {%if painting.creator_id == session.user_id%}
+                <td>
+                    <a href='/edit/{{painting.id}}'>Edit</a> |
+                    <a href='/destroy/painting/{{painting.id}}'>Delete</a>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      <div>
+    </div>
+    <div class="card-footer">
+    <a href="/">Logout</a> |
+    <a href="/new">Add Painting</a>
+    </div>
+</body>
+</html>

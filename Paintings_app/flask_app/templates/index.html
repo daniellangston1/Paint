@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2">
+        	<div class="panel panel-default">
+        		<div class="panel-heading">
+			    		<h3 class="panel-title">Register</h3>
+			 			</div>
+			 			<div class="panel-body">
+			    		<form role="form" action = '/register' method = 'post'>
+			    			<div class="row">
+								{% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+    								{% if messages %}                            <!-- check if there are any messages -->
+        								{% for message in messages %}            <!-- loop through the messages -->
+            								<p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+        								{% endfor %}
+    								{% endif %}
+								{% endwith %}
+			    				<div class="col-xs-6 col-sm-6 col-md-12">
+			    					<div class="form-group">
+			                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+			    					</div>
+			    				</div>
+			    			</div>
+
+			    			<div class="form-group">
+			    				<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+			    			</div>
+
+			    			<div class="row">
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="password" name="confirm" id="confirm" class="form-control input-sm" placeholder="Confirm Password">
+			    					</div>
+			    				</div>
+			    			</div>
+			    			
+			    			<input type="submit" value="Register" class="btn btn-info btn-block">
+			    		</form>
+			    	</div>
+	    		</div>
+    		</div>
+    	</div>
+    </div>
+	<div>
+		<form role="form" action = '/login' method = 'post'>
+			{% with messages = get_flashed_messages(category_filter=['login']) %}
+			{% if messages %}
+			<div class="alert alert-danger" role="alert">
+				<strong>Flash AHHHHHHH!!!!</strong>
+					{% for message in messages %}
+					<p>{{message}}</p>
+					{% endfor %}
+			</div>
+					{% endif %}
+					{% endwith %}
+			<h2>Login!</h2>
+			<div class="col-xs-6 col-sm-6 col-md-6">
+				<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-6 col-sm-6 col-md-6">
+					<div class="form-group">
+						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+					</div>
+				</div>
+				<input type="submit" value="login" class="btn btn-info btn-block">
+		</form>
+	</div>
+</body>
+</html>
